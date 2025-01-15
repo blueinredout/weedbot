@@ -1,5 +1,3 @@
-# This example requires the 'message_content' intent.
-
 import discord
 from discord.ext import commands
 import random
@@ -12,17 +10,17 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 @bot.event
 async def on_ready():
     print(f'Logged on as {bot.user}!')
-    # Sync the command tree
+    # Sync the command tree so discord understands this bot has commands
     try:
         synced = await bot.tree.sync()
-        print(f'Synced {len(synced)} command(s)')
+        print(f'Synced {len(synced)} command(s)')'
     except Exception as e:
         print(f'Failed to sync commands: {e}')
 
 @bot.tree.command(name="penis", description="time to measure")
 async def pepsi(interaction: discord.Interaction, user: discord.User = None):
     target_user = user or interaction.user
-    if target_user.id == 275238964838006784:
+    if target_user.id == 275238964838006784: ## this id is my own bot's user id. you can change it if you want.
         response = "ERROR: CHARACTER LIMIT REACHED TRYING TO INPUT CHARACTER: ="
     else:    
         random.seed(target_user.id)
@@ -33,9 +31,9 @@ async def pepsi(interaction: discord.Interaction, user: discord.User = None):
         response = f'{target_user.mention} Size: 8{"=" * size}D'
     await interaction.response.send_message(response)
 
-@bot.hybrid_group(invoke_without_command=True)
+@bot.hybrid_group(invoke_without_command=True) # most of these !faq commands ar einside jokes made for my friends to spam. edit them to your liking
 async def faq(ctx):
-    await ctx.send("Available FAQs: lines, owowhatsthis")
+    await ctx.send("Available FAQs: lines, owowhatsthis") ## todo: change this so it gets all the available commands in a list and outputs them dynamically
 
 @faq.command()
 async def lines(ctx):
@@ -48,10 +46,10 @@ async def owowhatsthis(ctx):
 
 @faq.command()
 async def douche(ctx):
-    await ctx.send("Stop being such a fucking douche.")
+    await ctx.send("Stop being such a fucking douche.") # omg the bad word
 
 @faq.command()
 async def peanut(ctx):
     await ctx.send("MMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLIDMMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLIDMMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLIDMMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLID")
     
-bot.run('SECRET HERE')
+bot.run('SECRET HERE') # Replace this with your bot's secret
