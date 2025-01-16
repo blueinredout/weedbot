@@ -60,5 +60,8 @@ async def douche(ctx):
 async def peanut(ctx):
     await ctx.send("MMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLIDMMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLIDMMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLIDMMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLID")
 
-print("token is" + TOKEN)
+@faq.command()
+async def u(ctx):
+    await ctx.send("That's rude :(")
+
 bot.run(TOKEN)
