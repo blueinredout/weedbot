@@ -4,17 +4,20 @@ import random
 
 intents = discord.Intents.default()
 intents.message_content = True
+TOKEN = ""
 
 bot = commands.Bot(command_prefix='!', intents=intents)
+
+with open('token.txt') as f:
+        lines = f.readlines()
+        if len(lines) != 1:
+            raise ValueError("token.txt should contain exactly one line")
+        TOKEN = lines[0].strip()
+        print(f'Token read from file: {TOKEN}')
 
 @bot.event
 async def on_ready():
     print(f'Logged on as {bot.user}!')
-    with open('token.txt', 'r') as f:
-    lines = f.readlines()
-    if len(lines) != 1:
-        raise ValueError("token.txt should contain exactly one line")
-    TOKEN = lines[0].strip()
     # Sync the command tree so discord understands this bot has commands
     try:
         synced = await bot.tree.sync()
@@ -57,4 +60,5 @@ async def douche(ctx):
 async def peanut(ctx):
     await ctx.send("MMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLIDMMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLIDMMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLIDMMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLID")
 
+print("token is" + TOKEN)
 bot.run(TOKEN)
