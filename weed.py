@@ -10,10 +10,15 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 @bot.event
 async def on_ready():
     print(f'Logged on as {bot.user}!')
+    with open('token.txt', 'r') as f:
+    lines = f.readlines()
+    if len(lines) != 1:
+        raise ValueError("token.txt should contain exactly one line")
+    TOKEN = lines[0].strip()
     # Sync the command tree so discord understands this bot has commands
     try:
         synced = await bot.tree.sync()
-        print(f'Synced {len(synced)} command(s)')'
+        print(f'Synced {len(synced)} command(s)')
     except Exception as e:
         print(f'Failed to sync commands: {e}')
 
@@ -22,7 +27,7 @@ async def pepsi(interaction: discord.Interaction, user: discord.User = None):
     target_user = user or interaction.user
     if target_user.id == 275238964838006784: ## this id is my own bot's user id. you can change it if you want.
         response = "ERROR: CHARACTER LIMIT REACHED TRYING TO INPUT CHARACTER: ="
-    else:    
+    else:
         random.seed(target_user.id)
         if random.randint(1, 255) == 1:
             size = random.randint(20, 35)
@@ -51,5 +56,5 @@ async def douche(ctx):
 @faq.command()
 async def peanut(ctx):
     await ctx.send("MMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLIDMMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLIDMMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLIDMMMMMMMMMM YUM, YUM, YUM, YUMMU AH HOW I LOVE JIFF PEANUT BUTTER !!!!!!!!!!! 😄 😄 😄 😄 😄 😄  SOOOOOOO(O GOOD WHEN IT SLID")
-    
-bot.run('SECRET HERE') # Replace this with your bot's secret
+
+bot.run(TOKEN)
